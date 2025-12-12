@@ -40,9 +40,9 @@ const AdminDashboard = () => {
     const fetchData = async () => {
         try {
             const [statsRes, usersRes, jobsRes] = await Promise.all([
-                fetch('http://localhost:5000/api/admin/stats', { headers: { Authorization: `Bearer ${token}` } }),
-                fetch('http://localhost:5000/api/admin/users', { headers: { Authorization: `Bearer ${token}` } }),
-                fetch('http://localhost:5000/api/jobs', { headers: { Authorization: `Bearer ${token}` } })
+                fetch('https://job-platform-2-k4om.onrender.com/api/admin/stats', { headers: { Authorization: `Bearer ${token}` } }),
+                fetch('https://job-platform-2-k4om.onrender.com/api/admin/users', { headers: { Authorization: `Bearer ${token}` } }),
+                fetch('https://job-platform-2-k4om.onrender.com/api/jobs', { headers: { Authorization: `Bearer ${token}` } })
             ]);
 
             const statsData = await statsRes.json();
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
     const handleDeleteUser = async (id: number) => {
         if (!window.confirm('Are you sure you want to delete this user?')) return;
         try {
-            await fetch(`http://localhost:5000/api/admin/users/${id}`, {
+            await fetch(`https://job-platform-2-k4om.onrender.com/api/admin/users/${id}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
     const handleDeleteJob = async (id: number) => {
         if (!window.confirm('Are you sure you want to delete this job?')) return;
         try {
-            await fetch(`http://localhost:5000/api/jobs/${id}`, {
+            await fetch(`https://job-platform-2-k4om.onrender.com/api/jobs/${id}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -141,8 +141,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('users')}
                         className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === 'users'
-                                ? 'border-primary-500 text-primary-600'
-                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                            ? 'border-primary-500 text-primary-600'
+                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                             }`}
                     >
                         User Management
@@ -150,8 +150,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('jobs')}
                         className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === 'jobs'
-                                ? 'border-primary-500 text-primary-600'
-                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                            ? 'border-primary-500 text-primary-600'
+                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                             }`}
                     >
                         Job Management
@@ -180,8 +180,8 @@ const AdminDashboard = () => {
                                         <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm text-gray-500">{user.email}</div></td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${user.role === 'ADMIN' ? 'bg-red-100 text-red-800' :
-                                                    user.role === 'EMPLOYER' ? 'bg-green-100 text-green-800' :
-                                                        'bg-blue-100 text-blue-800'
+                                                user.role === 'EMPLOYER' ? 'bg-green-100 text-green-800' :
+                                                    'bg-blue-100 text-blue-800'
                                                 }`}>
                                                 {user.role}
                                             </span>

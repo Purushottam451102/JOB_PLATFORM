@@ -54,7 +54,7 @@ const EmployerApplications = () => {
 
     const fetchApplications = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/applications/employer', {
+            const response = await axios.get('https://job-platform-2-k4om.onrender.com/api/applications/employer', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setApplications(response.data);
@@ -67,7 +67,7 @@ const EmployerApplications = () => {
 
     const handleStatusUpdate = async (id: number, newStatus: string) => {
         try {
-            await axios.put(`http://localhost:5000/api/applications/${id}/status`,
+            await axios.put(`https://job-platform-2-k4om.onrender.com/api/applications/${id}/status`,
                 { status: newStatus },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

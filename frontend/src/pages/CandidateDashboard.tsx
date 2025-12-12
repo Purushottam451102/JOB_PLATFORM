@@ -42,10 +42,10 @@ const CandidateDashboard = () => {
         const fetchData = async () => {
             try {
                 const [appRes, jobsRes] = await Promise.all([
-                    fetch('http://localhost:5000/api/applications/my', {
+                    fetch('https://job-platform-2-k4om.onrender.com/api/applications/my', {
                         headers: { Authorization: `Bearer ${token}` }
                     }),
-                    fetch('http://localhost:5000/api/jobs', { // Fetching all jobs for recommendations
+                    fetch('https://job-platform-2-k4om.onrender.com/api/jobs', { // Fetching all jobs for recommendations
                         headers: { Authorization: `Bearer ${token}` }
                     })
                 ]);

@@ -110,7 +110,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/users/profile', {
+                const response = await axios.get('https://job-platform-2-k4om.onrender.com/api/users/profile', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = response.data;
@@ -226,7 +226,7 @@ const Profile = () => {
                 jobPreferences: formData.profile?.jobPreferences
             };
 
-            await axios.put('http://localhost:5000/api/users/profile', payload, {
+            await axios.put('https://job-platform-2-k4om.onrender.com/api/users/profile', payload, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             toast.success('Profile updated successfully');
