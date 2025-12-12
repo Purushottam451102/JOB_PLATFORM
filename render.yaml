@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: job-platform-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.10.0
+      - key: DATABASE_SSL
+        value: 'true'
+      - key: DATABASE_URL
+        fromDatabase:
+          name: job-platform-db
+          property: connectionString
+    autoDeploy: false
+
+databases:
+  - name: job-platform-db
+    databaseName: job_platform
+    user: job_platform_user
+    plan: free # or starter, standard, etc.
