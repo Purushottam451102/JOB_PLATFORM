@@ -121,7 +121,7 @@ const JobListing: React.FC = () => {
                                                 </div>
                                             )}
                                             <span className="text-sm font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
-                                                {job.company?.name || job.employer.name}
+                                                {job.company?.name || "Hiring Company"}
                                             </span>
                                         </div>
 

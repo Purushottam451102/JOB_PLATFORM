@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Application, Job, User, Profile } from '../models';
+import { Application, Job, User, Profile, Company } from '../models';
 import { AuthRequest } from '../middleware/authMiddleware';
 
 export const applyForJob = async (req: AuthRequest, res: Response) => {
@@ -45,7 +45,10 @@ export const getMyApplications = async (req: AuthRequest, res: Response) => {
                 {
                     model: Job,
                     as: 'job',
-                    include: [{ model: User, as: 'employer', attributes: ['name'] }]
+                    include: [
+                        { model: User, as: 'employer', attributes: ['name'] },
+                        { model: Company, as: 'company', attributes: ['name', 'logo'] }
+                    ]
                 }
             ],
             order: [['createdAt', 'DESC']]

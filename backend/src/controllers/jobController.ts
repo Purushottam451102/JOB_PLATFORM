@@ -35,6 +35,11 @@ export const getJobById = async (req: Request, res: Response) => {
                     model: User,
                     as: 'employer',
                     attributes: ['name', 'email']
+                },
+                {
+                    model: Company,
+                    as: 'company',
+                    attributes: ['id', 'name', 'logo', 'location']
                 }
             ]
         });

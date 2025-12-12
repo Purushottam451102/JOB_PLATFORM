@@ -18,6 +18,9 @@ interface Application {
             name: string;
             email: string;
         };
+        company?: {
+            name: string;
+        };
     };
 }
 
@@ -25,6 +28,7 @@ interface Job {
     id: number;
     title: string;
     employer: { name: string };
+    company?: { name: string };
     location: string;
     type: string;
     salary: string;
@@ -170,7 +174,7 @@ const CandidateDashboard = () => {
                                                 </div>
                                                 <div>
                                                     <h3 className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{app.job.title}</h3>
-                                                    <p className="text-sm text-gray-500 font-medium">{app.job.employer.name}</p>
+                                                    <p className="text-sm text-gray-500 font-medium">{app.job.company?.name || "Hiring Company"}</p>
                                                 </div>
                                             </div>
                                             <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getStatusColor(app.status)}`}>
@@ -224,7 +228,7 @@ const CandidateDashboard = () => {
                                             </div>
                                             <div className="flex-1">
                                                 <h4 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">{job.title}</h4>
-                                                <p className="text-xs text-gray-500 mb-1">{job.employer.name}</p>
+                                                <p className="text-xs text-gray-500 mb-1">{job.company?.name || "Hiring Company"}</p>
                                                 <div className="flex items-center text-xs text-gray-400">
                                                     <MapPin className="w-3 h-3 mr-1" />
                                                     {job.location}

@@ -17,6 +17,11 @@ interface Job {
         name: string;
         email: string;
     };
+    company?: {
+        name: string;
+        logo: string;
+        location: string;
+    };
 }
 
 const JobDetail: React.FC = () => {
@@ -81,9 +86,21 @@ const JobDetail: React.FC = () => {
                     <div className="flex justify-between items-start mb-6">
                         <div>
                             <h1 className="text-3xl font-bold text-gray-900 mb-2">{job.title}</h1>
-                            <div className="flex items-center text-lg text-gray-700 font-medium">
-                                <Building className="h-5 w-5 mr-2 text-gray-400" />
-                                {job.employer.name}
+                            <div className="flex items-center text-lg text-gray-700 font-medium mt-2">
+                                {job.company?.logo ? (
+                                    <img
+                                        src={job.company.logo}
+                                        alt={job.company.name}
+                                        className="h-10 w-10 rounded-full object-cover border border-gray-200 mr-3"
+                                    />
+                                ) : (
+                                    <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+                                        <Building className="h-5 w-5 text-gray-500" />
+                                    </div>
+                                )}
+                                <span className="text-gray-900 font-semibold">
+                                    {job.company?.name || "Hiring Company"}
+                                </span>
                             </div>
                         </div>
                         {isAuthenticated && user?.role === 'CANDIDATE' && (

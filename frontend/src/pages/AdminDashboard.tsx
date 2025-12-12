@@ -21,6 +21,7 @@ interface Job {
     id: number;
     title: string;
     employer: { name: string };
+    company?: { name: string };
     location: string;
     createdAt: string;
 }
@@ -213,7 +214,7 @@ const AdminDashboard = () => {
                                 {jobs.map((job) => (
                                     <tr key={job.id} className="hover:bg-gray-50 transition-colors">
                                         <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm font-medium text-gray-900">{job.title}</div></td>
-                                        <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm text-gray-500">{job.employer?.name || 'Unknown'}</div></td>
+                                        <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm text-gray-500">{job.company?.name || job.employer?.name || 'Unknown'}</div></td>
                                         <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm text-gray-500">{job.location}</div></td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(job.createdAt).toLocaleDateString()}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
