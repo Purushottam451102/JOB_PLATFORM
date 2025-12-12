@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Search, Briefcase, MapPin, CheckCircle, XCircle, Clock, ChevronDown, User, Calendar } from 'lucide-react';
+import { Search, MapPin, CheckCircle, XCircle, Clock, ChevronDown, User, Calendar } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 

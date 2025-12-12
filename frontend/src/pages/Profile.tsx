@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { User as UserIcon, Mail, Camera, Edit2, Plus, Trash2, MapPin, Phone, Linkedin, Github, Briefcase, Calendar, DollarSign, Clock, Save } from 'lucide-react';
+import { User as UserIcon, Mail, Camera, Edit2, Trash2, MapPin, Phone, Linkedin, Github, Briefcase, Calendar, DollarSign, Clock } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 

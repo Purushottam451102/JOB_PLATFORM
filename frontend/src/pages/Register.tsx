@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api';
 import { useAuth } from '../context/AuthContext';
-import { AlertCircle, User, Briefcase } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Register: React.FC = () => {
