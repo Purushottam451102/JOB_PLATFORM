@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import { MapPin, Briefcase, DollarSign, Clock, Building, ArrowLeft } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 interface Job {
     id: number;
@@ -53,7 +54,7 @@ const JobDetail: React.FC = () => {
             return;
         }
         if (user?.role === 'EMPLOYER') {
-            alert("Employers cannot apply for jobs.");
+            toast.error("Employers cannot apply for jobs.");
             return;
         }
 
@@ -62,11 +63,11 @@ const JobDetail: React.FC = () => {
             // Simple apply with no extra data for MVP, or open a modal
             // For now assume direct apply or ask for resume
             await api.post('/applications', { jobId: job?.id }); // Resume URL?
-            alert('Application submitted successfully!');
+            toast.success('Application submitted successfully!');
             navigate('/candidate/dashboard');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
-            alert(error.response?.data?.message || 'Failed to apply');
+            toast.error(error.response?.data?.message || 'Failed to apply');
         } finally {
             setApplying(false);
         }
@@ -99,7 +100,7 @@ const JobDetail: React.FC = () => {
                                     </div>
                                 )}
                                 <span className="text-gray-900 font-semibold">
-                                    {job.company?.name || "Hiring Company"}
+                                    {job.company?.name}
                                 </span>
                             </div>
                         </div>
